@@ -334,7 +334,7 @@
           
             <p>Boosting算法是一种训练多个基学习器，并将其组成强学习器的集成学习算法。其工作的核心思想大致如下：从训练集训练出一个基学习器，再根据基学习器对训练样本的分布进行调整，然后用调整之后的样本分布训练下一个基学习器；如此循环，直到基学习器的数量达到某一指定数值，或者触发其他的指定停止条件，最后将学习到的基学习器组合得到最终的学习器。</p>
 <p>限于水平，本文主要讨论Boosting算法簇的<strong>AdaBoost</strong>、<strong>GBDT</strong>、<strong>XGBoost</strong>以及<strong>LightGBM</strong>算法。</p>
-<h1 id="一、AdaBoost"><a href="#一、AdaBoost" class="headerlink" title="一、AdaBoost"></a>一、AdaBoost</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>假定有一个二分类的任务，训练集表示为$$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_m,y_m)\rbrace$$<br>在训练第$k$个基学习器的样本权重分布为<br>$$D_k = (w_{k1},w_{k2},…,w_{km})$$<br>其中$w_{ki}$代表样本$(x_i,y_i)$的权重，则AdaBoost算法的工作流程如下：</p>
+<h1 id="一、AdaBoost"><a href="#一、AdaBoost" class="headerlink" title="一、AdaBoost"></a>一、AdaBoost</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>假定有一个二分类的任务，训练集表示为$$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_m,y_m)\rbrace$$<br>在训练第$k$个基学习器的样本权重分布为<br>$$D_k = (w_{k,1},w_{k,2},…,w_{k,m})$$<br>其中$w_{ki}$代表样本$(x_i,y_i)$的权重，则AdaBoost算法的工作流程如下：</p>
 <p>(1) 初始化样本的权重分布<br>$$D_1 = (w_{1,1},w_{1,2},…,w_{1,m}), w_{1,i}=\frac{1}{m},i=1,2,…,m$$<br>(2)for $k=1$  to  $M$</p>
 <ul>
 <li>用权重分布为$D_k$的训练数据训练得基学习器$f_k(x)$</li>
